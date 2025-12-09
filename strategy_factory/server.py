@@ -599,7 +599,7 @@ class StrategyFactoryHandler(http.server.SimpleHTTPRequestHandler):
                 self.send_header("Content-Type", "text/html; charset=utf-8")
                 self.end_headers()
 
-                with open(md_path, "r") as f:
+                with open(md_path, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 if HAS_MARKDOWN:

@@ -290,7 +290,7 @@ Guidelines:
                 file_name = f"{deliverable_id}.md"
                 file_path = company_dir / file_name
                 
-                with open(file_path, "w") as f:
+                with open(file_path, "w", encoding="utf-8") as f:
                     f.write(content.content)
                 
                 file_paths[deliverable_id] = str(file_path)

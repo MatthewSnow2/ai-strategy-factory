@@ -1127,7 +1127,7 @@ def get_markdown(company_slug, filename):
     if not md_path.exists():
         return "File not found", 404
 
-    with open(md_path, "r") as f:
+    with open(md_path, "r", encoding="utf-8") as f:
         content = f.read()
 
     # Remove YAML frontmatter if present

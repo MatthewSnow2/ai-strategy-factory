@@ -276,7 +276,7 @@ class ResearchOrchestrator:
             },
         }
         
-        with open(cache_file, "w") as f:
+        with open(cache_file, "w", encoding="utf-8") as f:
             json.dump(cache_data, f, indent=2)
     
     def load_research_cache(self, cache_file: Path) -> bool:
@@ -293,7 +293,7 @@ class ResearchOrchestrator:
             return False
         
         try:
-            with open(cache_file, "r") as f:
+            with open(cache_file, "r", encoding="utf-8") as f:
                 data = json.load(f)
             
             self.mode = ResearchMode(data["mode"])

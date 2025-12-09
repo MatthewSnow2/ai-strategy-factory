@@ -316,7 +316,7 @@ class MermaidRenderer:
 {mermaid_code}
 """
 
-        with open(placeholder_path, 'w') as f:
+        with open(placeholder_path, 'w', encoding='utf-8') as f:
             f.write(content)
 
         # Also create a simple text-based "image" placeholder

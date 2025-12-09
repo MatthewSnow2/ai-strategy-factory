@@ -760,7 +760,7 @@ Examples:
 
             file_path = markdown_dir / f"{d_id}.md"
             if file_path.exists():
-                with open(file_path, "r") as f:
+                with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read()
 
                 deliverables[d_id] = DeliverableContent(

@@ -129,7 +129,7 @@ class ProgressTracker:
 
     def _load_state(self) -> PipelineState:
         """Load existing state from file."""
-        with open(self.state_file, 'r') as f:
+        with open(self.state_file, 'r', encoding='utf-8') as f:
             data = json.load(f)
         return PipelineState(**data)
 
@@ -139,7 +139,7 @@ class ProgressTracker:
             state = self.state
         state.updated_at = datetime.now()
 
-        with open(self.state_file, 'w') as f:
+        with open(self.state_file, 'w', encoding='utf-8') as f:
             f.write(state.model_dump_json(indent=2))
 
     def _ensure_directories(self):
@@ -222,7 +222,7 @@ class ProgressTracker:
                 deliverable_info = DELIVERABLES.get(d_id, {})
                 content += f"- [ ] {deliverable_info.get('name', d_id)}\n"
 
-        with open(file_path, 'w') as f:
+        with open(file_path, 'w', encoding='utf-8') as f:
             f.write(content)
 
     # ========================================================================
@@ -333,7 +333,7 @@ class ProgressTracker:
         self.state.total_research_cost = research_output.total_cost
 
         # Also save to separate file for easier access
-        with open(self.research_cache_file, 'w') as f:
+        with open(self.research_cache_file, 'w', encoding='utf-8') as f:
             f.write(research_output.model_dump_json(indent=2))
 
         self._save_state()
@@ -342,7 +342,7 @@ class ProgressTracker:
     def load_research_output(self) -> Optional[ResearchOutput]:
         """Load research output from cache."""
         if self.research_cache_file.exists():
-            with open(self.research_cache_file, 'r') as f:
+            with open(self.research_cache_file, 'r', encoding='utf-8') as f:
                 data = json.load(f)
             return ResearchOutput(**data)
         return self.state.research_output

@@ -96,7 +96,7 @@ class PerplexityClient:
         cache_file = self.cache_dir / "research_cache.json"
         if cache_file.exists():
             try:
-                with open(cache_file, "r") as f:
+                with open(cache_file, "r", encoding="utf-8") as f:
                     data = json.load(f)
                     for key, entry in data.items():
                         # Reconstruct QueryResult from dict
@@ -137,7 +137,7 @@ class PerplexityClient:
                     "ttl_hours": entry.ttl_hours,
                 }
             
-            with open(cache_file, "w") as f:
+            with open(cache_file, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=2, default=str)
         except Exception as e:
             print(f"Warning: Could not save cache: {e}")
